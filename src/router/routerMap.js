@@ -21,7 +21,53 @@ let constantRouterMap = [
             meta: {title: 'Home', icon: 'excel', noCache: true}
         }]
     },
-
+    //service api分组
+    {
+      path: '/service',
+      component: Layout,
+      redirect: '/service/index',
+      children: [
+        {
+          path: 'index',
+          component: () => import('../views/service/index'),
+          name: 'serviceIndex',
+          meta: {title: 'Service', icon: 'component', noCache: true}
+        },
+        {
+          path: 'new',
+          hidden: true,
+          component: () => import('../views/service/new'),
+          name: 'serviceNew',
+          meta: {
+            title: '新增',
+            noCache: true,
+            parent: {path: '/service/index', meta: {title: 'Service'}}
+          }
+        },
+        {
+          path: 'edit',
+          hidden: true,
+          component: () => import('../views/service/edit'),
+          name: 'serviceEdit',
+          meta: {
+            title: '修改',
+            noCache: true,
+            parent: {path: '/service/index', meta: {title: 'Service'}}
+          }
+        },
+        {
+          path: 'show',
+          hidden: true,
+          component: () => import('../views/service/show'),
+          name: 'serviceShow',
+          meta: {
+            title: '查看',
+            noCache: true,
+            parent: {path: '/service/index', meta: {title: 'Service'}}
+          }
+        }
+      ],
+    },
     // api
     {
         path: '/api',
